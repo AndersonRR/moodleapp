@@ -31,6 +31,11 @@ $orange:          #f98012; // Accent (never text).
 $yellow:          #fbad1a; // Accent (never text).
 $purple:          #8e24aa; // Accent (never text).
 
+$unijui-blue:     #004196; // Accent (never text).
+$diferenciais-color-first: #ff0c68;
+$diferenciais-color-second: #c1215a;
+$diferenciais-color-inscricao: #4b5bb3;
+
 // Branded apps customization
 // --------------------------------------------------
 @import "bmma";
@@ -52,9 +57,22 @@ $orange-light:    lighten($orange, 10%) !default;
 $yellow-light:    mix($yellow, white, 20%) !default;
 $yellow-dark:     mix($yellow, black, 40%) !default;
 
-$core-color:          $orange !default;
+$core-color:          $unijui-blue !default;
 $core-color-light:    lighten($core-color, 10%) !default;
 $core-color-dark:     darken($core-color, 10%) !default;
+
+//custom colors
+$toolbar-background-color: mix(white, #ff0c68, 20%) !default;
+// $toolbar-background-color: linear-gradient(
+//   to right,
+//   white 0%,
+//   white 20%,
+//   #6db3ff 32%,
+//   #4b5ab2 56%,
+//   #39358e 69%,
+//   #c1215a 93%,
+//   #ff0c68 98%
+// );
 
 $core-course-image-background: #81ecec, #74b9ff, #a29bfe, #dfe6e9, #00b894, #0984e3, #b2bec3, #fdcb6e, #fd79a8, #6c5ce7 !default;
 
@@ -65,7 +83,7 @@ $core-course-image-background: #81ecec, #74b9ff, #a29bfe, #dfe6e9, #00b894, #098
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
-$toolbar-background: $core-color !default;
+$toolbar-background: $toolbar-background-color !default;
 $content-padding: 10px;
 
 // Named Color Variables

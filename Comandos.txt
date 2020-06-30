@@ -1,0 +1,16 @@
+---abrir no navegador (executar cada um dos 2 comandos em um terminal único)---
+npx gulp watch 
+npx ionic-app-scripts serve -b --devapp --address=0.0.0.0
+
+---construir apk unsigned---
+ionic cordova build --release android 
+
+---assinar apk---
+//criar chave (a chave não precisa ser criada novamente, basta usar a existente)
+keytool -genkey -v -keystore chave-unijui-moodle.keystore -alias unijui_moodle -keyalg RSA -keysize 2048 -validity 10000
+
+//assinar
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore chave-unijui-moodle.keystore unijui-moodle-unsigned.apk unijui_moodle
+
+//comprimir a chave
+.\zipalign -v 4 unijui-moodle-unsigned.apk unijui-moodle.apk

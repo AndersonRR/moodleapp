@@ -6,6 +6,7 @@ ion-app.app-root.md {
   // Light buttons color.
   .button-md-light {
     color: color($colors, primary, base);
+    color: #ffffff;
   }
 
   .col[align-self-stretch] .card-md {

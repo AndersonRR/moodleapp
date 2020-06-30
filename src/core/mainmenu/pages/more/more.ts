@@ -15,10 +15,11 @@
 import { Component, OnDestroy } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { CoreEventsProvider } from '@providers/events';
-import { CoreSitesProvider } from '@providers/sites';
+import { CoreDomUtilsProvider } from '@providers/utils/dom';
 import { CoreMainMenuDelegate, CoreMainMenuHandlerData } from '../../providers/delegate';
 import { CoreMainMenuProvider, CoreMainMenuCustomItem } from '../../providers/mainmenu';
 import { CoreLoginHelperProvider } from '@core/login/providers/helper';
+import { CoreSitesProvider, CoreSiteBasicInfo } from '@providers/sites';
 
 /**
  * Page that displays the list of main menu options that aren't in the tabs.
@@ -40,14 +41,20 @@ export class CoreMainMenuMorePage implements OnDestroy {
     docsUrl: string;
     customItems: CoreMainMenuCustomItem[];
     siteUrl: string;
+    siteSlogan: string;
+    sites: CoreSiteBasicInfo[];
 
     protected subscription;
     protected langObserver;
     protected updateSiteObserver;
 
-    constructor(private menuDelegate: CoreMainMenuDelegate, private sitesProvider: CoreSitesProvider,
-            private navCtrl: NavController, private mainMenuProvider: CoreMainMenuProvider,
-            eventsProvider: CoreEventsProvider, private loginHelper: CoreLoginHelperProvider) {
+    constructor(private domUtils: CoreDomUtilsProvider,
+            private menuDelegate: CoreMainMenuDelegate,
+            private sitesProvider: CoreSitesProvider,
+            private navCtrl: NavController,
+            private mainMenuProvider: CoreMainMenuProvider,
+            eventsProvider: CoreEventsProvider,
+            private loginHelper: CoreLoginHelperProvider) {
 
         this.langObserver = eventsProvider.on(CoreEventsProvider.LANGUAGE_CHANGED, this.loadSiteInfo.bind(this));
         this.updateSiteObserver = eventsProvider.on(CoreEventsProvider.SITE_UPDATED, this.loadSiteInfo.bind(this),
@@ -110,6 +117,7 @@ export class CoreMainMenuMorePage implements OnDestroy {
         this.siteInfo = currentSite.getInfo();
         this.siteName = currentSite.getSiteName();
         this.siteUrl = currentSite.getURL();
+        this.siteSlogan = 'Universidade Regional';
         this.logoutLabel = this.loginHelper.getLogoutLabel(currentSite);
         this.showWeb = !currentSite.isFeatureDisabled('CoreMainMenuDelegate_website');
         this.showHelp = !currentSite.isFeatureDisabled('CoreMainMenuDelegate_help');
@@ -160,5 +168,18 @@ export class CoreMainMenuMorePage implements OnDestroy {
      */
     logout(): void {
         this.sitesProvider.logout();
+    }
+
+    add(): void {
+        this.loginHelper.goToAddSite(false, true);
+    }
+
+    logoutFullold(): void {
+        const newLocal = 'core.login.confirmdeletesite';
+        this.domUtils.showDeleteConfirm(newLocal, 'Site').then(() => {
+            this.add();
+        }).catch(() => {
+            // User cancelled, nothing to do.
+        });
     }
 }

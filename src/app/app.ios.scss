@@ -10,6 +10,7 @@ ion-app.app-root.ios {
   // Light buttons color.
   .button-ios-light {
     color: color($colors, primary, base);
+    color: #ffffff;
   }
 
   .col[align-self-stretch] .card-ios {

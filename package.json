@@ -191,7 +191,7 @@
   "main": "desktop/electron.js",
   "build": {
     "appId": "com.moodle.moodledesktop",
-    "productName": "Moodle Desktop",
+    "productName": "Unijuí Moodle Desktop",
     "files": [
       "desktop/electron.js",
       "www/**/*",

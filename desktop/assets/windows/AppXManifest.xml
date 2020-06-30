@@ -8,9 +8,9 @@
     Publisher="CN=33CDCDF6-1EB5-4827-9897-ED25C91A32F6"
     Version="3.8.2.0" />
   <Properties>
-    <DisplayName>Moodle Desktop</DisplayName>
+    <DisplayName>Unijuí Moodle Desktop</DisplayName>
     <PublisherDisplayName>Moodle Pty Ltd.</PublisherDisplayName>
-    <Description>The official app for Moodle.</Description>
+    <Description>Unijuí app for Moodle.</Description>
     <Logo>assets\StoreLogo.png</Logo>
   </Properties>
   <Resources>
@@ -23,10 +23,10 @@
     <rescap:Capability Name="runFullTrust"/>
   </Capabilities>
   <Applications>
-    <Application Id="com.moodle.moodlemobile" Executable="app\Moodle Desktop.exe" EntryPoint="Windows.FullTrustApplication">
+    <Application Id="com.moodle.unijuimoodle" Executable="app\Moodle Desktop.exe" EntryPoint="Windows.FullTrustApplication">
       <uap:VisualElements
        BackgroundColor="#464646"
-       DisplayName="Moodle Desktop"
+       DisplayName="Unijuí Moodle Desktop"
        Square150x150Logo="assets\Square150x150Logo.png"
        Square44x44Logo="assets\Square44x44Logo.png"
        Description="Moodle Desktop: The official desktop app for Moodle.">
